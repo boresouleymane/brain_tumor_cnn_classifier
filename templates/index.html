@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Classification de tumeur cérébrale</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Classification d'images de tumeurs</h1>
+        <form method="post" enctype="multipart/form-data">
+            <label>Choisir un modèle :</label>
+            <select name="model">
+                <option value="tensorflow">TensorFlow</option>
+                <option value="torch">PyTorch</option>
+            </select>
+
+            <label>Image :</label>
+            <input type="file" name="image" accept="image/*">
+
+            <input type="submit" value="Prédire">
+        </form>
+
+        {% if prediction %}
+            <h2>Prédiction : {{ prediction }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
